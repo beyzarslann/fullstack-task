@@ -11,13 +11,13 @@ export class FirebaseService {
         credential: admin.credential.cert(serviceAccount),
       });
 
-      console.log('Firebase hazır ✅');
+      console.log('Firebase');
     }
   }
 
   async subscribe(token: string) {
     await admin.messaging().subscribeToTopic(token, 'usdt');
-    console.log('Abone oldu ✅');
+    console.log('Abone oldu');
     return { ok: true };
   }
 
@@ -32,7 +32,7 @@ export class FirebaseService {
     await admin.messaging().send({
       topic: 'usdt',
       notification: {
-        title: 'BIG TRANSFER 🚨',
+        title: 'transfer',
         body,
       },
       // data key'leri kısa olsun: f,t,a,h
@@ -44,7 +44,6 @@ export class FirebaseService {
       },
     });
 
-    console.log('Bildirim gitti ✅');
     return true;
   }
 }
